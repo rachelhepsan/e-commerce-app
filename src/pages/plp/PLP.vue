@@ -59,7 +59,7 @@ onMounted(() => {
         <h1>New Season <br />Arrivals!</h1>
       </div>
       <div class="banner-image">
-        <img src="/banner.jpg" alt="banner" />
+        <img src="@/assets/images/banner.jpg" alt="banner" />
       </div>
     </div>
     <section>
