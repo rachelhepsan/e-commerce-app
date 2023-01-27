@@ -1,5 +1,5 @@
 <script setup>
-import { usePlpStore } from '@/views/plp/plpStore';
+import { usePlpStore } from '@/pages/plp/plpStore';
 const plpStore = usePlpStore();
 const state = plpStore.state;
 </script>

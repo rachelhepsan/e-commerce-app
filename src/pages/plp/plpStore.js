@@ -1,8 +1,13 @@
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { defineStore } from 'pinia';
 
-export const useHomeStore = defineStore('home', () => {
-  const users = ref([]);
-  const loading = ref(false);
-  return { users, loading };
+export const usePlpStore = defineStore('plp', () => {
+  const state = reactive({
+    results: [],
+    searchKey: '',
+    checkCategory: [],
+    checkPriceRange: [],
+  });
+
+  return { state };
 });

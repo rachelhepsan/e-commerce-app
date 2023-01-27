@@ -12,6 +12,11 @@ const router = createRouter({
       component: () => import('@/pages/plp/PLP.vue'),
     },
     {
+      path: '/plp/:productId',
+      name: 'product-details',
+      // component: () => import("@/views/pdp/PDP.vue")
+    },
+    {
       path: allRoutes.LOGIN_ROUTE,
       name: allRoutes.LOGIN_ROUTE_NAME,
       component: () => import('@/pages/login/LoginView.vue'),
