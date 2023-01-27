@@ -1,5 +1,5 @@
 import { getUsers } from '@/service/users';
-import { useHomeStore } from './store';
+import { useHomeStore } from './plpStore';
 
 const store = useHomeStore();
 
