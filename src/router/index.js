@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/plp/:productId',
       name: 'product-details',
-      // component: () => import("@/views/pdp/PDP.vue")
+      component: () => import('@/pages/pdp/PDP.vue'),
     },
     {
       path: allRoutes.LOGIN_ROUTE,
@@ -32,6 +32,10 @@ const router = createRouter({
       component: () => import('@/pages/NotFound.vue'),
     },
   ],
+});
+
+router.afterEach(() => {
+  window.scrollTo(0, 0);
 });
 
 router.beforeEach(async to => {

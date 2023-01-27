@@ -1,0 +1,158 @@
+main {
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 102px; */
+}
+
+#product-count{
+  margin-right: 22px;
+  position:absolute;
+  background-color: #ceccc8;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 1px 7px;
+  left: 30px;
+  bottom: 27px;
+}
+#product-image{
+  box-sizing: border-box;
+  width: 45%;
+}
+#product-image img{
+  /* height: 100%; 
+  width: 100%;  */
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+#product-description {
+  box-sizing: border-box;
+  background-color: #ceccc8;
+  color: #26323a;
+  width: 55%;
+  padding: 25px 70px;
+  height: 100vh;
+  overflow: auto;
+}
+
+hr {
+  width: 100%;
+  border: 1px solid #26323a;
+}
+#product-description {
+  display: flex;
+  flex-direction: column;
+}
+#product-description > * {
+  margin-bottom: 10px;
+}
+#discount {
+  display: flex;
+  align-items: center;
+}
+#cut-dollar{
+  font-size: 13px;
+}
+s {
+  font-size: 19px;
+}
+#discount h3 {
+  padding-left: 7px;
+  color: #a40000;
+  font-size: 15px;
+}
+#price-quantity {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+#price-quantity p {
+  margin: 8px 0px;
+}
+#price-word{
+  letter-spacing: 1.3px;
+  font-size: 11px;
+}
+
+
+#price {
+  color: darkgreen;
+  font-size: 26px;
+  font-size: 500;
+  font-weight: 700;
+}
+.dollar {
+  color: darkgreen;
+  font-size: 20px;
+  font-size: 500;
+  font-weight: 700;
+}
+
+
+#product-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+#product-details-container h4,
+p {
+  margin: 0;
+}
+#product-details-container p {
+  font-size: 27px;
+}
+.detail-para {
+  display: inline;
+}
+#detail-para-colon {
+  display: inline;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+ul li {
+  padding-bottom: 10px;
+}
+#what-we-offer {
+  margin-top: 7px;
+}
+#what-we-offer p {
+  padding-bottom: 10px;
+}
+
+#customer-care-number {
+  border: none;
+}
+
+#total-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 67%;
+  margin-top: 20px;
+}
+#total-price-word {
+  margin: 2px 0px;
+  font-size: 14px;
+  letter-spacing: 1.3px;
+}
+#total-price {
+  display: inline-block;
+  margin: 2px 0px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 6px;
+  color: darkgreen;
+  margin-left: 6px;
+}
+#total-price-container button {
+  margin-top: 10px;
+  padding: 12px 28px;
+  cursor: pointer;
+  background-color: #26323a;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+}
