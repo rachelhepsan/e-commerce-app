@@ -9,7 +9,7 @@ const router = createRouter({
     {
       path: allRoutes.HOME_ROUTE,
       name: allRoutes.HOME_ROUTE_NAME,
-      component: () => import('@/pages/home/HomeView.vue'),
+      component: () => import('@/pages/plp/PLP.vue'),
     },
     {
       path: allRoutes.LOGIN_ROUTE,
