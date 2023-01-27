@@ -1,6 +1,6 @@
 <script setup>
-import ProductInfoVue from '@/components/ProductInfo.vue';
-import SideNavBar from '@/components/SideNavBar.vue';
+import ProductInfoVue from './components/ProductInfo.vue';
+import SideNavBar from './components/SideNavBar.vue';
 
 import { usePlpStore } from './plpStore';
 import { onMounted, watch } from 'vue';
