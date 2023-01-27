@@ -19,10 +19,9 @@ import FooterView from './components/FooterView.vue';
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: auto;
   main {
-    padding: 2em 4em;
     flex: 1;
-    overflow: auto;
   }
 }
 </style>
