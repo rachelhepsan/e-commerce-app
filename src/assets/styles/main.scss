@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background: $body-background;
+  font-family: $font-montserrat;
+  color: $body-font-color;
+}
+
+a {
+  color: map-get($palette-colors, 'primary');
+  &:hover {
+    color: darken(map-get($palette-colors, 'primary'), 20);
+  }
+}

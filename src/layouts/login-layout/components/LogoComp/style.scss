@@ -1,0 +1,23 @@
+@keyframes reduce-gap {
+  from {
+    margin: 0 25px;
+    opacity: 0;
+  }
+  to {
+    margin: 0 0;
+    opacity: 1;
+  }
+}
+
+.logo-comp {
+  padding: 12px 0;
+  @include flex-centered;
+  img {
+    width: 100px;
+    animation: reduce-gap 0.5s forwards ease-in;
+  }
+  .logo-seperator {
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+}

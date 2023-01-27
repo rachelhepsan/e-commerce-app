@@ -1,0 +1,23 @@
+.button-comp {
+  cursor: pointer;
+  padding: 5px 10px;
+  color: $body-font-secondary-color;
+  box-shadow: 0 0 3px transparent;
+  transition: box-shadow 0.2s;
+  border: solid 1px map-get($palette-colors, 'primary');
+  background-color: map-get($palette-colors, 'primary');
+  &:hover {
+    box-shadow: 0 0 5px map-get($palette-colors, 'primary');
+    background-color: darken(map-get($palette-colors, 'primary'), 5);
+  }
+  @each $color-name, $color in $palette-colors {
+    &.#{$color-name} {
+      border-color: $color;
+      background-color: $color;
+      &:hover {
+        box-shadow: 0 0 5px $color;
+        background-color: darken($color, 5);
+      }
+    }
+  }
+}

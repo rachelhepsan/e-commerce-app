@@ -1,0 +1,15 @@
+.login-form {
+  width: 320px;
+  &.loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .button-wrap {
+    padding: 10px 0;
+    .error {
+      font-size: 12px;
+      padding-left: 12px;
+      color: map-get($palette-colors, 'error');
+    }
+  }
+}
