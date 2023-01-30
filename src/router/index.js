@@ -12,7 +12,7 @@ const router = createRouter({
       component: () => import('@/pages/plp/PLP.vue'),
     },
     {
-      path: '/plp/:productId',
+      path: '/:productId',
       name: 'product-details',
       component: () => import('@/pages/pdp/PDP.vue'),
     },

@@ -10,12 +10,19 @@ import { logout } from '@/service/auth';
     <CardComp class="header-wrap">
       <div class="app-title">
         <router-link :to="HOME_ROUTE" class="app-title">
-          <img src="@/assets/images/qb-logo.png" />
-          <img src="@/assets/images/vue-logo.png" />
+          <h2>ShopCart</h2>
         </router-link>
-        <span>Qburst Vue Boilerplate</span>
       </div>
-      <ButtonComp @click="logout()">Logout</ButtonComp>
+      <div class="cart-container">
+        <input
+          type="search"
+          placeholder="search for products"
+          class="search-input"
+        />
+        <i class="fa-solid fa-cart-shopping"></i>
+        <!-- <span ref="productCount" class="product-count">0</span> -->
+        <ButtonComp @click="logout()">Logout</ButtonComp>
+      </div>
     </CardComp>
   </header>
 </template>
@@ -23,21 +30,61 @@ import { logout } from '@/service/auth';
 <style lang="scss" scoped>
 header {
   z-index: 1;
+
   .header-wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .app-title {
       display: flex;
       align-items: center;
+
       img {
         width: 20px;
       }
+
       span {
         padding-left: 10px;
         font-size: 14px;
       }
     }
   }
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 25px;
+  color: brown;
+  cursor: pointer;
+}
+
+.cart-container {
+  position: relative;
+  margin-right: 20px;
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+.search-input {
+  margin-right: 23px;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.product-count {
+  margin-right: 22px;
+  position: absolute;
+  background-color: #ceccc8;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 1px 7px;
+  left: 30px;
+  bottom: 27px;
 }
 </style>
