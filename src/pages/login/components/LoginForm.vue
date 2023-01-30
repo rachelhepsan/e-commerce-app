@@ -2,7 +2,6 @@
 import { onMounted, watch } from 'vue';
 import { useLoginStore } from '../store.js';
 import { attemptLogin, watchFormData, clearForm } from '../service.js';
-import CardComp from '@/components/CardComp.vue';
 import InputComp from '@/components/InputComp/InputComp.vue';
 import ButtonComp from '@/components/ButtonComp/ButtonComp.vue';
 
@@ -15,25 +14,39 @@ onMounted(clearForm);
 </script>
 
 <template>
-  <CardComp class="login-form" :class="store.loading && 'loading'">
+  <div class="login-form" :class="store.loading && 'loading'">
     <form @submit.prevent="attemptLogin">
+      <h1>Welcome Back</h1>
       <InputComp
         v-model="formData.username"
         label="Username"
+        type="text"
+        placeholder="User Name"
         :class="errors.username && 'error'"
       />
       <InputComp
         v-model="formData.password"
         label="Password"
         type="password"
+        placeholder="Password"
         :class="errors.password && 'error'"
       />
       <div class="button-wrap">
-        <ButtonComp type="submit">Login</ButtonComp>
+        <ButtonComp type="submit" class="sign-in-anchor">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Sign In
+        </ButtonComp>
         <label class="error">{{ store.loginError }}</label>
+        <p>
+          Dont have an account ?
+          <a>Sign Up</a>
+        </p>
       </div>
     </form>
-  </CardComp>
+  </div>
 </template>
 
 <style lang="scss" scoped>

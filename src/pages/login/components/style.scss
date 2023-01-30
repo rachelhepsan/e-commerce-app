@@ -1,5 +1,6 @@
 .login-form {
   width: 320px;
+  margin: 0 auto;
   &.loading {
     opacity: 0.5;
     pointer-events: none;
@@ -12,4 +13,105 @@
       color: map-get($palette-colors, 'error');
     }
   }
+}
+.sign-in-anchor {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: grey;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  margin-right: 50px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-left: 60px;
+  border: none;
+  width: 150px;
+  font-size: 15px;
+  background: none;
+}
+.sign-in-anchor:hover {
+  background: grey;
+  color: #050801;
+  box-shadow: 0 0 5px grey, 0 0 5px grey, 0 0 5px grey, 0 0 5px grey;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+.sign-in-anchor:nth-child(1) {
+  filter: hue-rotate(270deg);
+}
+.sign-in-anchor:nth-child(2) {
+  filter: hue-rotate(110deg);
+}
+.sign-in-anchor span {
+  position: absolute;
+  display: block;
+}
+.sign-in-anchor span:nth-child(1) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, grey);
+  animation: animate1 1s linear infinite;
+}
+@keyframes animate1 {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+.sign-in-anchor span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, grey);
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2 {
+  0% {
+    top: -100%;
+  }
+  50%,
+  100% {
+    top: 100%;
+  }
+}
+.sign-in-anchor span:nth-child(3) {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, grey);
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+@keyframes animate3 {
+  0% {
+    right: -100%;
+  }
+  50%,
+  100% {
+    right: 100%;
+  }
+}
+form p {
+  margin: 0 auto;
+}
+a:link{
+  text-decoration: none;
+}
+h1 {
+  color: #7c795d;
+  font-family: "Trocchi", serif;
+  font-size: 45px;
+  font-weight: normal;
+  line-height: 48px;
 }
