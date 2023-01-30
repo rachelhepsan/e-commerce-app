@@ -1,12 +1,15 @@
 .input-comp {
   padding: 5px 0;
+
   label {
     font-size: 15px;
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 12px;
   }
+
   .input-wrap {
     display: flex;
+
     input {
       flex: 1;
       padding: 7px 10px;
@@ -14,19 +17,27 @@
       transition: box-shadow 0.2s;
       border: solid 1px map-get($palette-colors, 'secondary');
       box-shadow: 0 0 3px transparent;
+
       &:focus,
       &:focus-visible {
         outline: none;
-        border-color: map-get($palette-colors, 'primary');
-        box-shadow: 0 0 3px map-get($palette-colors, 'primary');
+        // border-color: map-get($palette-colors, 'primary');
+        // box-shadow: 0 0 3px map-get($palette-colors, 'primary');
       }
+
+      border: none;
+      border-bottom: 2px solid grey;
+      margin-bottom: 14px;
     }
   }
-  @each $color-name, $color in $palette-colors {
+
+  @each $color-name,
+  $color in $palette-colors {
     &.#{$color-name} {
       .input-wrap {
         input {
           border-color: $color;
+
           &:focus-visible {
             box-shadow: 0 0 3px $color;
           }

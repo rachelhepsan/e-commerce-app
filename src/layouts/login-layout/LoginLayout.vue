@@ -1,11 +1,11 @@
 <script setup>
-import LogoComp from './components/LogoComp/LogoComp.vue';
+// import LogoComp from './components/LogoComp/LogoComp.vue';
 </script>
 
 <template>
   <div class="login">
     <div class="inner-wrap">
-      <LogoComp />
+      <!-- <LogoComp /> -->
       <RouterView />
     </div>
   </div>
@@ -13,7 +13,6 @@ import LogoComp from './components/LogoComp/LogoComp.vue';
 
 <style lang="scss" scoped>
 .login {
-  @include flex-centered;
   height: 90vh;
 }
 </style>
