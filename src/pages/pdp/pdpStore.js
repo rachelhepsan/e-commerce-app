@@ -6,6 +6,7 @@ export const usePdpStore = defineStore("pdp", () => {
   function setData(newData) {
     data.value = newData;
   }
-
-  return { data, setData };
+  const headerCart = ref(1);
+  let headerCartCount = ref(1);
+  return { data, setData, headerCart,headerCartCount };
 });

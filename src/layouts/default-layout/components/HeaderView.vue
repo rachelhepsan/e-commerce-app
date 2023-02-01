@@ -3,6 +3,20 @@ import ButtonComp from '@/components/ButtonComp/ButtonComp.vue';
 import CardComp from '@/components/CardComp.vue';
 import { HOME_ROUTE } from '@/constants/routes';
 import { logout } from '@/service/auth';
+import { storeToRefs } from 'pinia';
+import { usePdpStore } from '@/pages/pdp/pdpStore';
+import { usePlpStore } from '@/pages/plp/plpStore';
+
+const plpStore = usePlpStore();
+const state = plpStore.state;
+
+const pdpStore = usePdpStore();
+const { headerCartCount } = storeToRefs(pdpStore);
+
+
+// let url = window.location.href;
+// v-if="url.endsWith('/')"
+// const productCount = ref(null);
 </script>
 
 <template>
@@ -18,9 +32,12 @@ import { logout } from '@/service/auth';
           type="search"
           placeholder="search for products"
           class="search-input"
+          v-model="state.searchKey"
         />
         <i class="fa-solid fa-cart-shopping"></i>
-        <!-- <span ref="productCount" class="product-count">0</span> -->
+        <span ref="productCount" class="product-count">{{
+          headerCartCount
+        }}</span>
         <ButtonComp @click="logout()" class="logout-button">Logout</ButtonComp>
       </div>
     </CardComp>
@@ -63,8 +80,10 @@ h2 {
 }
 
 .cart-container {
+  display: flex;
+  justify-content: space-between;
   position: relative;
-  margin-right: 20px;
+  width: 26%;
 
   i {
     margin-right: 10px;
@@ -72,7 +91,6 @@ h2 {
 }
 
 .search-input {
-  margin-right: 23px;
   border-radius: 20px;
   padding: 5px;
 }
@@ -84,14 +102,13 @@ h2 {
   border: 1px solid black;
   border-radius: 12px;
   padding: 1px 7px;
-  left: 30px;
-  bottom: 27px;
+  right: 46px;
+  bottom: 32px;
 }
 
 .logout-button {
   background-color: #000;
   color: #fff;
-  margin-left: 5px;
   border: none;
   padding: 6px 10px;
   border-radius: 20px;

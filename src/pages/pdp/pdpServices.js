@@ -5,6 +5,7 @@ const { setData } = usePdpStore();
 
 //select a particular object from an array of objects thus obtaining the details of the clicked object
 export const getProducts = async (parameter) => {
+  console.log(window.location.href);
   const response = await axios(
     "https://rachelhepsan.github.io/ProductDetails/data.json"
   );
