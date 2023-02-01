@@ -6,7 +6,7 @@ import { useAuthStore } from '@/stores/auth';
 import router from '@/router';
 
 export const login = async credentials =>
-  getApiResult(async () => api.post('LOGIN', credentials));
+  getApiResult(async () => api.post('auth/login', credentials));
 
 export const logout = () => {
   // Keep your logout logic here
