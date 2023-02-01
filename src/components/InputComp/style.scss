@@ -1,10 +1,18 @@
 .input-comp {
+
   padding: 5px 0;
 
   label {
     font-size: 15px;
     display: block;
     margin-bottom: 12px;
+  }
+
+  label:focus-within {
+    font-weight: bold;
+    color: #7c795d;
+    letter-spacing: 1.5px;
+    font-size: 17px;
   }
 
   .input-wrap {
@@ -30,6 +38,7 @@
       margin-bottom: 14px;
     }
   }
+
 
   @each $color-name,
   $color in $palette-colors {

@@ -13,13 +13,14 @@ const updateValue = event => {
 
 <template>
   <div class="input-comp">
-    <label v-if="label">{{ label }}</label>
+    <label for="unique" v-if="label">{{ label }}</label>
     <div class="input-wrap">
       <input
         type="text"
         :value="modelValue"
         @input="updateValue"
         v-bind="$attrs"
+        id="unique"
       />
     </div>
   </div>

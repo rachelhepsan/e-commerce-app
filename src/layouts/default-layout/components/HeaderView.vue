@@ -21,7 +21,7 @@ import { logout } from '@/service/auth';
         />
         <i class="fa-solid fa-cart-shopping"></i>
         <!-- <span ref="productCount" class="product-count">0</span> -->
-        <ButtonComp @click="logout()">Logout</ButtonComp>
+        <ButtonComp @click="logout()" class="logout-button">Logout</ButtonComp>
       </div>
     </CardComp>
   </header>
@@ -86,5 +86,20 @@ h2 {
   padding: 1px 7px;
   left: 30px;
   bottom: 27px;
+}
+
+.logout-button {
+  background-color: #000;
+  color: #fff;
+  margin-left: 5px;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.logout-button:hover {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0px 0px 5px 0px #000;
 }
 </style>
