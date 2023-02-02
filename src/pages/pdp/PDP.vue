@@ -11,17 +11,13 @@ import QuantityChange from './components/QuantityChange.vue';
 const pdpStore = usePdpStore();
 const { data, headerCart,headerCartCount} = storeToRefs(pdpStore);
 
-// const router = useRouter();
 const route = useRoute();
 onMounted(() => {
-  // console.log(route.params.productId);
   getProducts(route.params.productId);
 });
-// const productCount = ref(null);
+
 const showDetails = ref(false);
-// const dressSize = ref(false);
 const addTocart = ref(null);
-// const headerCart = ref(1);
 const addToCartText = ref('Add to cart');
 const totalOutputPrice = ref(null);
 
@@ -33,18 +29,13 @@ function toggleshowDetails() {
 //changes the text of add to cart when clicked
 //Also updates the total cart count number in the header.
 const updateCart = () => {
-  console.log(headerCart.value);
   addToCartText.value = 'Added to cart';
   headerCartCount.value = (+headerCartCount.value) + (+headerCart.value)
   console.log(headerCartCount.value);
-  // productCount.value.innerText = headerCart.value;
 };
 </script>
 
 <template>
-  <!-- <Header>
-    <span ref="productCount" id="product-count">0</span>
-  </Header> -->
   <main>
     <div id="product-image">
       <img :src="data.images" />
@@ -121,7 +112,6 @@ const updateCart = () => {
       </div>
     </div>
   </main>
-  <!-- <Footer /> -->
 </template>
 
 <style scoped>

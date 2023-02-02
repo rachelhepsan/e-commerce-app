@@ -13,10 +13,6 @@ const state = plpStore.state;
 const pdpStore = usePdpStore();
 const { headerCartCount } = storeToRefs(pdpStore);
 
-
-// let url = window.location.href;
-// v-if="url.endsWith('/')"
-// const productCount = ref(null);
 </script>
 
 <template>
