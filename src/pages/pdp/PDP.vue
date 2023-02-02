@@ -2,45 +2,36 @@
 import { onMounted } from 'vue';
 import { usePdpStore } from './pdpStore';
 import { getProducts } from './pdpServices';
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import DressSize from './components/DressSize.vue';
 import QuantityChange from './components/QuantityChange.vue';
 
 const pdpStore = usePdpStore();
-const { data } = storeToRefs(pdpStore);
+const {data} = storeToRefs(pdpStore);
 
-// const router = useRouter();
 const route = useRoute();
 onMounted(() => {
   getProducts(route.params.productId);
 });
-const productCount = ref(null);
-const showDetails = ref(false);
-// const dressSize = ref(false);
-const addTocart = ref(null);
-const headerCart = ref(1);
-const addToCartText = ref('Add to cart');
-const totalOutputPrice = ref(null);
+
+
 
 //Toggle the product detail section of each product
 function toggleshowDetails() {
-  showDetails.value = !showDetails.value;
+  pdpStore.showDetails = !pdpStore.showDetails ;
 }
 
 //changes the text of add to cart when clicked
 //Also updates the total cart count number in the header.
 const updateCart = () => {
-  productCount.value.innerText = headerCart.value;
-  addToCartText.value = 'Added to cart';
+  pdpStore.addToCartText= 'Added to cart';
+  pdpStore.headerCartCount = (+pdpStore.headerCartCount) + (+pdpStore.headerCart)
 };
 </script>
 
 <template>
-  <!-- <Header>
-    <span ref="productCount" id="product-count">0</span>
-  </Header> -->
   <main>
     <div id="product-image">
       <img :src="data.images" />
@@ -67,11 +58,12 @@ const updateCart = () => {
 
         <QuantityChange
           :data="data"
-          @header-cart="param => (headerCart = param)"
-          @increase-by="param => (totalOutputPrice = param)"
-          @decrease-by="param => (totalOutputPrice = param)"
-          @button-change="param => (addToCartText = param)"
+          @header-cart="param => (pdpStore.headerCart = param)"
+          @increase-by="param => (pdpStore.totalOutputPrice = param)"
+          @decrease-by="param => (pdpStore.totalOutputPrice = param)"
+          @button-change="param => ( pdpStore.addToCartText = param)"
         />
+
       </div>
       <div v-if="data.category === 'Fashion'">
         <DressSize />
@@ -83,7 +75,7 @@ const updateCart = () => {
         <p>+</p>
       </div>
 
-      <ul v-if="showDetails">
+      <ul v-if="pdpStore.showDetails ">
         <li v-for="(item, index) in data.details" :key="index">
           <p class="detail-para">{{ Object.keys(item)[0] }}</p>
           <p id="detail-para-colon">:</p>
@@ -107,16 +99,15 @@ const updateCart = () => {
             ><i class="fa-solid fa-indian-rupee-sign"></i
           ></span>
 
-          <p id="total-price" v-if="totalOutputPrice === null">
+          <p id="total-price" v-if="pdpStore.totalOutputPrice === null">
             {{ data.price }}
           </p>
-          <p id="total-price" ref="totalPrice" v-else>{{ totalOutputPrice }}</p>
+          <p id="total-price" ref="totalPrice" v-else>{{ pdpStore.totalOutputPrice }}</p>
         </div>
-        <button @click="updateCart" ref="addTocart">{{ addToCartText }}</button>
+        <button @click="updateCart" >{{ pdpStore.addToCartText }}</button>
       </div>
     </div>
   </main>
-  <!-- <Footer /> -->
 </template>
 
 <style scoped>
