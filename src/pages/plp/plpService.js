@@ -27,7 +27,6 @@ export const filterByCategory = checked => {
   if (checked.length) {
     dataArray.forEach(product => {
       Object.values(checked).forEach(element => {
-        console.log(product.category.toLowerCase(), element);
         if (product.category.toLowerCase() === element) {
           state.results.push(product);
         }
