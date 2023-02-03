@@ -12,7 +12,6 @@ const state = plpStore.state;
 
 const pdpStore = usePdpStore();
 const { headerCartCount } = storeToRefs(pdpStore);
-
 </script>
 
 <template>
