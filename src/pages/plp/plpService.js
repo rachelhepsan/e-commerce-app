@@ -32,8 +32,10 @@ export const filterByCategory = checked => {
         }
       });
     });
+    console.log("1",state.results)
   } else {
     state.results = dataArray;
+    console.log("2",state.results)
   }
 };
 

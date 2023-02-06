@@ -24,8 +24,10 @@ watch(
 watch(
   () => state.checkCategory,
   () => {
+    console.log("**",state.checkCategory)
     state.results = [];
     filterByCategory(state.checkCategory);
+    console.log("***",state.results);
   },
 );
 

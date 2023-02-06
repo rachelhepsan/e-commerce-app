@@ -9,7 +9,6 @@ export const usePdpStore = defineStore('pdp', () => {
   const headerCart = ref(1);
   const headerCartCount = ref(0);
   const showDetails = ref(false);
-  const addToCartText = ref('Add to cart');
   const totalOutputPrice = ref(null);
   return {
     data,
@@ -17,7 +16,6 @@ export const usePdpStore = defineStore('pdp', () => {
     headerCart,
     headerCartCount,
     showDetails,
-    addToCartText,
     totalOutputPrice,
   };
 });
