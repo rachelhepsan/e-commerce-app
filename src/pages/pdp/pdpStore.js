@@ -16,7 +16,6 @@ export const usePdpStore = defineStore('pdp', () => {
     headerCart,
     headerCartCount,
     showDetails,
-    addToCartText,
     totalOutputPrice,
   };
 });
