@@ -1,14 +1,18 @@
 import axios from 'axios';
+// import { getUsers } from '@/service/users';
 import { usePlpStore } from './plpStore';
 const plpStore = usePlpStore();
 const state = plpStore.state;
 
 let dataArray = [];
 
-export const getProducts = async () => {
+export const getProducts = async callback => {
   const response = await axios.get(
     'https://rachelhepsan.github.io/ProductDetails/data.json',
   );
+
+  // const response = await getUsers();
+  // console.log(response);
 
   dataArray = response.data;
 
@@ -21,10 +25,14 @@ export const getProducts = async () => {
       }
     });
   }
+  callback();
 };
 
 export const filterByCategory = checked => {
-  if (checked.length) {
+  // eslint-disable-next-line no-debugger
+  // debugger;
+  if (Object.values(checked).length) {
+    state.results = [];
     dataArray.forEach(product => {
       Object.values(checked).forEach(element => {
         if (product.category.toLowerCase() === element) {
@@ -39,6 +47,7 @@ export const filterByCategory = checked => {
 
 export const filterByPriceRange = checked => {
   if (checked.length) {
+    state.results = [];
     dataArray.forEach(product => {
       Object.values(checked).forEach(element => {
         if (!element.includes('-')) {
@@ -53,7 +62,6 @@ export const filterByPriceRange = checked => {
           }
         } else {
           let num = element.split('-');
-          console.log(num);
           if (+product.price >= num[0] && +product.price <= num[1]) {
             state.results.push(product);
           }

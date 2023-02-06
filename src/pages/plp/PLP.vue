@@ -24,7 +24,6 @@ watch(
 watch(
   () => state.checkCategory,
   () => {
-    state.results = [];
     filterByCategory(state.checkCategory);
   },
 );
@@ -32,27 +31,19 @@ watch(
 watch(
   () => state.checkPriceRange,
   () => {
-    state.results = [];
     filterByPriceRange(state.checkPriceRange);
   },
 );
 
 onMounted(() => {
-  getProducts();
+  getProducts(() => {
+    filterByCategory(state.checkCategory);
+  });
+  filterByPriceRange(state.checkPriceRange);
 });
 </script>
 
 <template>
-  <!-- <Header>
-    <template v-slot:search>
-      <input
-        type="search"
-        placeholder="search for products"
-        class="search-input"
-        v-model="state.searchKey"
-      />
-    </template>
-  </Header> -->
   <main>
     <div class="banner">
       <div class="banner-caption">
@@ -66,9 +57,9 @@ onMounted(() => {
       <SideNavBar />
       <div class="product-container">
         <ProductInfoVue
-          v-for="(data, index) in state.results"
+          v-for="data in state.results"
           :data="data"
-          :key="index"
+          :key="data.id"
         />
       </div>
     </section>

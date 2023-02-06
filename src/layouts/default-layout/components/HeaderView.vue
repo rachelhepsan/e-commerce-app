@@ -12,6 +12,8 @@ const state = plpStore.state;
 
 const pdpStore = usePdpStore();
 const { headerCartCount } = storeToRefs(pdpStore);
+let url = window.location.href;
+console.log(url);
 </script>
 
 <template>
@@ -28,6 +30,7 @@ const { headerCartCount } = storeToRefs(pdpStore);
           placeholder="search for products"
           class="search-input"
           v-model="state.searchKey"
+          v-if="url.endsWith('/')"
         />
         <i class="fa-solid fa-cart-shopping"></i>
         <span ref="productCount" class="product-count">{{
