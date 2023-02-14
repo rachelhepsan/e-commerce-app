@@ -9,6 +9,7 @@ const productRoute = {
   name: 'product-details',
   params: { productId: props.data.id },
 };
+
 </script>
 
 <template>

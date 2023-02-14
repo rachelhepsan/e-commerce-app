@@ -15,8 +15,6 @@ onMounted(() => {
   getProducts(route.params.productId);
 });
 
-console.log(route.params.productId);
-
 //Toggle the product detail section of each product
 function toggleshowDetails() {
   pdpStore.showDetails = !pdpStore.showDetails;

@@ -43,7 +43,6 @@ export const attemptLogin = async () => {
   }
   store.loading = true;
   encryptedData.password = await dataEncrypt(formData.password);
-  console.log(encryptedData.password);
   encryptedData.username = formData.username;
   const response = await login(encryptedData);
   store.loading = false;
