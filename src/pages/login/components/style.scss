@@ -9,7 +9,7 @@
     padding: 10px 0;
     .error {
       font-size: 12px;
-      padding-left: 12px;
+      padding-left: 80px;
       color: map-get($palette-colors, 'error');
     }
   }
@@ -132,4 +132,8 @@ h1 {
   font-size: 45px;
   font-weight: normal;
   line-height: 48px;
+}
+
+.sign-up{
+  margin-top: 10px;
 }

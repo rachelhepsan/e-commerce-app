@@ -1,36 +1,30 @@
-import axios from 'axios';
-// import { getUsers } from '@/service/users';
+// import axios from 'axios';
+import { getProduct } from '@/service/products';
+import { getCategoryApi } from '@/service/category';
 import { usePlpStore } from './plpStore';
 const plpStore = usePlpStore();
 const state = plpStore.state;
 
 let dataArray = [];
 
-export const getProducts = async callback => {
-  const response = await axios.get(
-    'https://rachelhepsan.github.io/ProductDetails/data.json',
-  );
-
-  // const response = await getUsers();
-  // console.log(response);
-
-  dataArray = response.data;
+export const getProducts = async (callback1, callback2) => {
+  const response = await getProduct();
+  dataArray = response.data.products;
 
   if (state.searchKey === '') {
-    state.results = response.data;
+    state.results = response.data.products;
   } else {
-    response.data.forEach(element => {
-      if (element.title.toLowerCase().startsWith(state.searchKey)) {
+    response.data.products.forEach(element => {
+      if (element.name.toLowerCase().startsWith(state.searchKey)) {
         state.results.push(element);
       }
     });
   }
-  callback();
+  callback1();
+  callback2();
 };
 
 export const filterByCategory = checked => {
-  // eslint-disable-next-line no-debugger
-  // debugger;
   if (Object.values(checked).length) {
     state.results = [];
     dataArray.forEach(product => {
@@ -51,7 +45,7 @@ export const filterByPriceRange = checked => {
     dataArray.forEach(product => {
       Object.values(checked).forEach(element => {
         if (!element.includes('-')) {
-          if (element == 100) {
+          if (element == 50) {
             if (+product.price <= +element) {
               state.results.push(product);
             }
@@ -71,4 +65,9 @@ export const filterByPriceRange = checked => {
   } else {
     state.results = dataArray;
   }
+};
+
+export const getCategory = async () => {
+  const response = await getCategoryApi();
+  console.log(response.data.categories);
 };

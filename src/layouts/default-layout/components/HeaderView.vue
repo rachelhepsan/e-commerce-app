@@ -1,9 +1,10 @@
 <script setup>
+import { storeToRefs } from 'pinia';
+import { useRoute } from 'vue-router';
 import ButtonComp from '@/components/ButtonComp/ButtonComp.vue';
 import CardComp from '@/components/CardComp.vue';
 import { HOME_ROUTE } from '@/constants/routes';
 import { logout } from '@/service/auth';
-import { storeToRefs } from 'pinia';
 import { usePdpStore } from '@/pages/pdp/pdpStore';
 import { usePlpStore } from '@/pages/plp/plpStore';
 
@@ -12,7 +13,8 @@ const state = plpStore.state;
 
 const pdpStore = usePdpStore();
 const { headerCartCount } = storeToRefs(pdpStore);
-let url = window.location.href;
+const route = useRoute();
+console.log('routeeee', route);
 </script>
 
 <template>
@@ -29,7 +31,7 @@ let url = window.location.href;
           placeholder="search for products"
           class="search-input"
           v-model="state.searchKey"
-          v-if="url.endsWith('/')"
+          v-if="route.name === 'home'"
         />
         <i class="fa-solid fa-cart-shopping"></i>
         <span ref="productCount" class="product-count">{{
@@ -80,10 +82,11 @@ h2 {
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 26%;
 
   i {
-    margin-right: 10px;
+    margin-right: 25px;
+    margin-left: 10px;
+    font-size: 25px;
   }
 }
 

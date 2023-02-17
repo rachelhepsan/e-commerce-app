@@ -40,7 +40,7 @@ onMounted(clearForm);
           Sign In
         </ButtonComp>
         <label class="error">{{ store.loginError }}</label>
-        <p>
+        <p class="sign-up">
           Dont have an account ?
           <a>Sign Up</a>
         </p>

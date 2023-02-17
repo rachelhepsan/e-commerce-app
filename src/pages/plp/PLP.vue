@@ -8,6 +8,7 @@ import {
   getProducts,
   filterByCategory,
   filterByPriceRange,
+  getCategory,
 } from './plpService';
 
 const plpStore = usePlpStore();
@@ -36,10 +37,15 @@ watch(
 );
 
 onMounted(() => {
-  getProducts(() => {
-    filterByCategory(state.checkCategory);
-  });
-  filterByPriceRange(state.checkPriceRange);
+  getProducts(
+    () => {
+      filterByCategory(state.checkCategory);
+    },
+    () => {
+      filterByPriceRange(state.checkPriceRange);
+    },
+  );
+  getCategory();
 });
 </script>
 

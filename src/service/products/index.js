@@ -1,4 +1,4 @@
 import api, { getApiResult } from '@/service/api';
 
-export const getUsers = async () =>
+export const getProduct = async () =>
   getApiResult(async () => api.get('PRODUCTS'));

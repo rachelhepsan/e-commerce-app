@@ -3,7 +3,9 @@ import { defineStore } from 'pinia';
 
 export const usePdpStore = defineStore('pdp', () => {
   const data = ref({});
+  console.log('hii', data.value);
   function setData(newData) {
+    console.log('heyy', newData);
     data.value = newData;
   }
   const headerCart = ref(1);

@@ -5,8 +5,10 @@ import { onResponse, onResponseError } from './responseInterceptor';
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
+    'Content-type': 'application/json',
     'access-control-allow-origin': '*',
   },
+  withCredentials: true,
 });
 
 api.interceptors.request.use(onRequest, onRequestError);

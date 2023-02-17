@@ -71,56 +71,56 @@ const state = plpStore.state;
             type="checkbox"
             id="pr1"
             name="pr1"
-            value="100"
+            value="50"
             v-model="state.checkPriceRange"
           />
           <label for="pr1">
             Less than
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 100</label
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 50</label
           ><br /><br />
           <input
             type="checkbox"
             id="pr2"
             name="pr2"
-            value="101-300"
+            value="51-100"
             v-model="state.checkPriceRange"
           />
           <label for="pr2">
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 101 -
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 300</label
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 51 -
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 100</label
           ><br /><br />
           <input
             type="checkbox"
             id="pr3"
             name="pr3"
-            value="301-500"
+            value="101-150"
             v-model="state.checkPriceRange"
           />
           <label for="pr3">
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 301 -
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 500</label
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 101 -
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 150</label
           ><br /><br />
           <input
             type="checkbox"
             id="pr4"
             name="pr4"
-            value="501-700"
+            value="151-200"
             v-model="state.checkPriceRange"
           />
           <label for="pr4">
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 501 -
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 700</label
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 151 -
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 200</label
           ><br /><br />
           <input
             type="checkbox"
             id="pr5"
             name="pr5"
-            value="701"
+            value="201"
             v-model="state.checkPriceRange"
           />
           <label for="pr5">
             Above
-            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 701</label
+            <i class="fa-solid fa-indian-rupee-sign icon-size"></i> 201</label
           ><br /><br />
         </form>
       </div>

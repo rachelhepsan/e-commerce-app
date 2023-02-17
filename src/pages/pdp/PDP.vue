@@ -2,6 +2,7 @@
 import { onMounted } from 'vue';
 import { usePdpStore } from './pdpStore';
 import { getProducts } from './pdpServices';
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import DressSize from './components/DressSize.vue';
@@ -9,8 +10,10 @@ import QuantityChange from './components/QuantityChange.vue';
 
 const pdpStore = usePdpStore();
 const { data } = storeToRefs(pdpStore);
-
+const addToCartText = ref('Add to cart');
 const route = useRoute();
+console.log(route);
+
 onMounted(() => {
   getProducts(route.params.productId);
 });
@@ -23,18 +26,21 @@ function toggleshowDetails() {
 //changes the text of add to cart when clicked
 //Also updates the total cart count number in the header.
 const updateCart = () => {
-  pdpStore.addToCartText = 'Added to cart';
+  addToCartText.value = 'Added to cart';
   pdpStore.headerCartCount = +pdpStore.headerCartCount + +pdpStore.headerCart;
 };
+
+// const image = data.productImages[0]?.imageURL;
+console.log('dataaaaaaaa', data);
 </script>
 
 <template>
   <main>
     <div id="product-image">
-      <img :src="data.images" />
+      <img :src="data.thumbnail" />
     </div>
     <div id="product-description">
-      <h1>{{ data.title }}</h1>
+      <h1>{{ data.name }}</h1>
       <p id="product-detail">{{ data.description }}</p>
       <div id="discount">
         <s id="cut-dollar"><i class="fa-solid fa-indian-rupee-sign"></i></s
@@ -58,7 +64,7 @@ const updateCart = () => {
           @header-cart="param => (pdpStore.headerCart = param)"
           @increase-by="param => (pdpStore.totalOutputPrice = param)"
           @decrease-by="param => (pdpStore.totalOutputPrice = param)"
-          @button-change="param => (pdpStore.addToCartText = param)"
+          @button-change="param => (addToCartText = param)"
         />
       </div>
       <div v-if="data.category === 'Fashion'">
@@ -102,7 +108,7 @@ const updateCart = () => {
             {{ pdpStore.totalOutputPrice }}
           </p>
         </div>
-        <button @click="updateCart">{{ pdpStore.addToCartText }}</button>
+        <button @click="updateCart">{{ addToCartText }}</button>
       </div>
     </div>
   </main>

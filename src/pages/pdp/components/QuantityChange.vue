@@ -48,7 +48,7 @@ const increaseCount = (maxQuantity, eachItemPrice) => {
       <i
         class="fa-solid fa-plus"
         @click="
-          increaseCount(data.quantity, data.price);
+          increaseCount(data.unit, data.price);
           $emit('increaseBy', totalPrice);
           $emit('headerCart', quantity.innerText);
           $emit('buttonChange', buttonTextChange);
