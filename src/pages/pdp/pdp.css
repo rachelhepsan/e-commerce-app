@@ -4,7 +4,7 @@ main {
   /* margin-top: 102px; */
 }
 
-#product-count{
+.product-count{
   margin-right: 22px;
   position:absolute;
   background-color: #ceccc8;
@@ -14,18 +14,18 @@ main {
   left: 30px;
   bottom: 27px;
 }
-#product-image{
+.product-image{
   box-sizing: border-box;
   width: 45%;
 }
-#product-image img{
+.product-image img{
   /* height: 100%; 
   width: 100%;  */
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
-#product-description {
+.product-description {
   box-sizing: border-box;
   background-color: #ceccc8;
   color: #26323a;
@@ -39,43 +39,55 @@ hr {
   width: 100%;
   border: 1px solid #26323a;
 }
-#product-description {
+.product-description {
   display: flex;
   flex-direction: column;
 }
-#product-description > * {
+.product-description > * {
   margin-bottom: 10px;
 }
-#discount {
+.product-review{
+  margin: 10px;
+}
+.text-align-right{
+  text-align: right;
+  padding: 5px;
+  font-size: 12px;
+}
+.customer-review{
+  display: flex;
+  justify-content: space-between;
+}
+.discount {
   display: flex;
   align-items: center;
 }
-#cut-dollar{
+.cut-dollar{
   font-size: 13px;
 }
 s {
   font-size: 19px;
 }
-#discount h3 {
+.discount h3 {
   padding-left: 7px;
   color: #a40000;
   font-size: 15px;
 }
-#price-quantity {
+.price-quantity {
   display: flex;
   justify-content: space-between;
   width: 60%;
 }
-#price-quantity p {
+.price-quantity p {
   margin: 8px 0px;
 }
-#price-word{
+.price-word{
   letter-spacing: 1.3px;
   font-size: 11px;
 }
 
 
-#price {
+.price {
   color: darkgreen;
   font-size: 26px;
   font-size: 500;
@@ -89,24 +101,24 @@ s {
 }
 
 
-#product-details-container {
+.product-details-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   margin-bottom: 0px;
 }
-#product-details-container h4,
+.product-details-container h4,
 p {
   margin: 0;
 }
-#product-details-container p {
+.product-details-container p {
   font-size: 27px;
 }
 .detail-para {
   display: inline;
 }
-#detail-para-colon {
+.detail-para-colon {
   display: inline;
   padding-left: 7px;
   padding-right: 7px;
@@ -114,30 +126,30 @@ p {
 ul li {
   padding-bottom: 10px;
 }
-#what-we-offer {
+.what-we-offer {
   margin-top: 7px;
 }
-#what-we-offer p {
+.what-we-offer p {
   padding-bottom: 10px;
 }
 
-#customer-care-number {
+.customer-care-number {
   border: none;
 }
 
-#total-price-container {
+.total-price-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 67%;
   margin-top: 20px;
 }
-#total-price-word {
+.total-price-word {
   margin: 2px 0px;
   font-size: 14px;
   letter-spacing: 1.3px;
 }
-#total-price {
+.total-price {
   display: inline-block;
   margin: 2px 0px;
   font-size: 20px;
@@ -146,7 +158,7 @@ ul li {
   color: darkgreen;
   margin-left: 6px;
 }
-#total-price-container button {
+.total-price-container button {
   margin-top: 10px;
   padding: 12px 28px;
   cursor: pointer;

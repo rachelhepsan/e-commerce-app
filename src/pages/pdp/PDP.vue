@@ -7,6 +7,14 @@ import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import DressSize from './components/DressSize.vue';
 import QuantityChange from './components/QuantityChange.vue';
+import { defineComponent } from 'vue';
+import StarRating from 'vue-star-rating';
+
+defineComponent({
+  components: {
+    StarRating,
+  },
+});
 
 const pdpStore = usePdpStore();
 const { data } = storeToRefs(pdpStore);
@@ -16,6 +24,7 @@ console.log(route);
 
 onMounted(() => {
   getProducts(route.params.productId);
+  pdpStore.buttonFlag = false;
 });
 
 //Toggle the product detail section of each product
@@ -28,30 +37,28 @@ function toggleshowDetails() {
 const updateCart = () => {
   addToCartText.value = 'Added to cart';
   pdpStore.headerCartCount = +pdpStore.headerCartCount + +pdpStore.headerCart;
+  pdpStore.buttonFlag = true;
 };
-
-// const image = data.productImages[0]?.imageURL;
-console.log('dataaaaaaaa', data);
 </script>
 
 <template>
   <main>
-    <div id="product-image">
+    <div class="product-image">
       <img :src="data.thumbnail" />
     </div>
-    <div id="product-description">
+    <div class="product-description">
       <h1>{{ data.name }}</h1>
-      <p id="product-detail">{{ data.description }}</p>
-      <div id="discount">
-        <s id="cut-dollar"><i class="fa-solid fa-indian-rupee-sign"></i></s
+      <p class="product-detail">{{ data.description }}</p>
+      <div class="discount">
+        <s class="cut-dollar"><i class="fa-solid fa-indian-rupee-sign"></i></s
         ><s>101</s>
         <h3>(20% OFF)</h3>
       </div>
 
-      <div id="price-quantity">
+      <div class="price-quantity">
         <div>
-          <p id="price-word">Price</p>
-          <p id="price" ref="a">
+          <p class="price-word">Price</p>
+          <p class="price" ref="a">
             <span class="dollar"
               ><i class="fa-solid fa-indian-rupee-sign"></i
             ></span>
@@ -71,44 +78,68 @@ console.log('dataaaaaaaa', data);
         <DressSize />
       </div>
 
-      <hr />
-      <div id="product-details-container" @click="toggleshowDetails">
-        <h4>Product Details</h4>
-        <p>+</p>
-      </div>
-
-      <ul v-if="pdpStore.showDetails">
-        <li v-for="(item, index) in data.details" :key="index">
-          <p class="detail-para">{{ Object.keys(item)[0] }}</p>
-          <p id="detail-para-colon">:</p>
-          <p class="detail-para">{{ Object.values(item)[0] }}</p>
-        </li>
-      </ul>
-
-      <hr />
-      <div id="what-we-offer">
+      <div class="what-we-offer">
         <p>&#10003;Free standard delivery on all orders</p>
         <p>&#10003;Free 30 day delivery Return</p>
         <p>
           &#10003;For any queries,plese contact customer service at
-          <span id="customer-care-number">0804335245</span>
+          <span class="customer-care-number">0804335245</span>
         </p>
       </div>
-      <div id="total-price-container">
+      <hr />
+      <div @click="toggleshowDetails">
+        <div class="product-details-container">
+          <h4 class="star-rating">Customer Reviews</h4>
+          <star-rating
+            v-bind:increment="0.1"
+            v-bind:star-size="20"
+            v-bind:read-only="true"
+            v-bind:rating="data.rating"
+          ></star-rating>
+        </div>
+        <p class="text-align-right" v-if="!pdpStore.showDetails">
+          tap to read more reviews
+        </p>
+      </div>
+
+      <ul v-if="pdpStore.showDetails">
+        <template v-for="(item, index) in data.review" :key="index">
+          <div class="customer-review">
+            <p
+              v-if="item.description && item.description !== ' '"
+              class="product-review"
+            >
+              {{ item.description }}
+            </p>
+            <star-rating
+              v-if="item.description && item.description !== ' '"
+              v-bind:increment="0.1"
+              v-bind:star-size="20"
+              v-bind:read-only="true"
+              v-bind:rating="item.rating"
+            ></star-rating>
+          </div>
+        </template>
+      </ul>
+
+      <hr />
+      <div class="total-price-container">
         <div>
-          <p id="total-price-word">Total Price</p>
+          <p class="total-price-word">Total Price</p>
           <span class="dollar"
             ><i class="fa-solid fa-indian-rupee-sign"></i
           ></span>
 
-          <p id="total-price" v-if="pdpStore.totalOutputPrice === null">
+          <!-- <p class="total-price" v-if="pdpStore.totalOutputPrice === null">
             {{ data.price }}
-          </p>
-          <p id="total-price" ref="totalPrice" v-else>
+          </p> -->
+          <p class="total-price" ref="totalPrice">
             {{ pdpStore.totalOutputPrice }}
           </p>
         </div>
-        <button @click="updateCart">{{ addToCartText }}</button>
+        <button @click="updateCart" :disabled="pdpStore.buttonFlag">
+          {{ addToCartText }}
+        </button>
       </div>
     </div>
   </main>

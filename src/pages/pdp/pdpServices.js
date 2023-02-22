@@ -2,7 +2,7 @@
 import { getProduct } from '@/service/products';
 import { usePdpStore } from './pdpStore.js';
 
-const { setData } = usePdpStore();
+const pdpStore = usePdpStore();
 
 //select a particular object from an array of objects thus obtaining the details of the clicked object
 export const getProducts = async parameter => {
@@ -10,7 +10,8 @@ export const getProducts = async parameter => {
   response.data.products.forEach(element => {
     console.log('element', element);
     if (element.id === parameter) {
-      setData(element);
+      pdpStore.setData(element);
+      pdpStore.totalOutputPrice = element.price;
     }
   });
 };

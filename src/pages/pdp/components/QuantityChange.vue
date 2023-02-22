@@ -1,12 +1,15 @@
 <script setup>
 import { ref } from 'vue';
+import { usePdpStore } from '../pdpStore';
+
 const props = defineProps({
   data: {
     type: Object,
   },
 });
+console.log('propsss', props);
 
-console.log(props);
+const pdpStore = usePdpStore();
 
 const quantity = ref(null);
 const totalPrice = ref(null);
@@ -18,22 +21,24 @@ const decreaseCount = eachItemPrice => {
   if (quantity.value.innerText > 1) {
     quantity.value.innerText--;
     totalPrice.value = eachItemPrice * quantity.value.innerText;
+    pdpStore.buttonFlag = false;
   }
 };
 //increases the count of each product
 //calcultaes the total price based on the number of quantity selected
 const increaseCount = (maxQuantity, eachItemPrice) => {
-  if (quantity.value.innerText < maxQuantity) {
+  if (quantity.value.innerText < +maxQuantity) {
     quantity.value.innerText++;
     totalPrice.value = eachItemPrice * quantity.value.innerText;
+    pdpStore.buttonFlag = false;
   }
 };
 </script>
 
 <template>
   <div>
-    <p id="quantity-word">Quantity</p>
-    <div id="quantity-container">
+    <p class="quantity-word">Quantity</p>
+    <div class="quantity-container">
       <i
         class="fa-solid fa-minus"
         @click="
@@ -44,11 +49,11 @@ const increaseCount = (maxQuantity, eachItemPrice) => {
         "
       >
       </i>
-      <p id="quantity" ref="quantity">1</p>
+      <p class="quantity" ref="quantity">1</p>
       <i
         class="fa-solid fa-plus"
         @click="
-          increaseCount(data.unit, data.price);
+          increaseCount(data.inventory, data.price);
           $emit('increaseBy', totalPrice);
           $emit('headerCart', quantity.innerText);
           $emit('buttonChange', buttonTextChange);
@@ -58,15 +63,15 @@ const increaseCount = (maxQuantity, eachItemPrice) => {
   </div>
 </template>
 <style scoped>
-#quantity-word {
+.quantity-word {
   letter-spacing: 1.3px;
   font-size: 11px;
 }
-#quantity-container {
+.quantity-container {
   display: flex;
   align-items: center;
 }
-#quantity-container p {
+.quantity-container p {
   margin: 0px 12px;
   font-weight: 700;
   font-size: 20px;
