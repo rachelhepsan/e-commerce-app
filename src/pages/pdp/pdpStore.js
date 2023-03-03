@@ -11,6 +11,8 @@ export const usePdpStore = defineStore('pdp', () => {
   const buttonFlag = ref(false);
   const showDetails = ref(false);
   const totalOutputPrice = ref(null);
+  const productsInCart = ref([]);
+  const totalPriceInCart = ref(0);
   return {
     data,
     setData,
@@ -19,5 +21,7 @@ export const usePdpStore = defineStore('pdp', () => {
     showDetails,
     buttonFlag,
     totalOutputPrice,
+    productsInCart,
+    totalPriceInCart,
   };
 });

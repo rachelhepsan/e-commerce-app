@@ -12,54 +12,18 @@ const state = plpStore.state;
       </li>
       <div>
         <form>
-          <input
-            type="checkbox"
-            id="books"
-            name="books"
-            value="books"
-            v-model="state.checkCategory"
-          />
-          <label for="books"> Books</label><br /><br />
-          <input
-            type="checkbox"
-            id="electronics"
-            name="electronics"
-            value="electronics"
-            v-model="state.checkCategory"
-          />
-          <label for="electronics"> Electronics</label><br /><br />
-          <input
-            type="checkbox"
-            id="fashion"
-            name="fashion"
-            value="fashion"
-            v-model="state.checkCategory"
-          />
-          <label for="fashion"> Fashion</label><br /><br />
-          <input
-            type="checkbox"
-            id="furniture"
-            name="furniture"
-            value="furniture"
-            v-model="state.checkCategory"
-          />
-          <label for="furniture"> Furniture</label><br /><br />
-          <input
-            type="checkbox"
-            id="sports"
-            name="sports"
-            value="sports"
-            v-model="state.checkCategory"
-          />
-          <label for="sports"> Shoes</label><br /><br />
-          <input
-            type="checkbox"
-            id="care"
-            name="care"
-            value="personal care"
-            v-model="state.checkCategory"
-          />
-          <label for="care"> Personal Care</label><br /><br />
+          <ul>
+            <li v-for="(data, index) in state.categories" :key="index">
+              <input
+                type="checkbox"
+                :id="data.name"
+                :name="data.name"
+                :value="data.name"
+                v-model="state.checkCategory"
+              />
+              <label :for="data.name"> {{ data.name }}</label> <br /><br />
+            </li>
+          </ul>
         </form>
       </div>
       <li>

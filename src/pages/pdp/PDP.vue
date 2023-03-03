@@ -25,6 +25,7 @@ console.log(route);
 onMounted(() => {
   getProducts(route.params.productId);
   pdpStore.buttonFlag = false;
+  pdpStore.headerCart = 1;
 });
 
 //Toggle the product detail section of each product
@@ -36,6 +37,11 @@ function toggleshowDetails() {
 //Also updates the total cart count number in the header.
 const updateCart = () => {
   addToCartText.value = 'Added to cart';
+  console.log('cartt', pdpStore.productsInCart);
+  if (!pdpStore.productsInCart.includes(data.value)) {
+    pdpStore.productsInCart.push(data.value);
+    pdpStore.totalPriceInCart = +pdpStore.totalPriceInCart + +data.value.price;
+  }
   pdpStore.headerCartCount = +pdpStore.headerCartCount + +pdpStore.headerCart;
   pdpStore.buttonFlag = true;
 };
@@ -129,10 +135,6 @@ const updateCart = () => {
           <span class="dollar"
             ><i class="fa-solid fa-indian-rupee-sign"></i
           ></span>
-
-          <!-- <p class="total-price" v-if="pdpStore.totalOutputPrice === null">
-            {{ data.price }}
-          </p> -->
           <p class="total-price" ref="totalPrice">
             {{ pdpStore.totalOutputPrice }}
           </p>

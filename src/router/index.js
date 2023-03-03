@@ -17,6 +17,11 @@ const router = createRouter({
       component: () => import('@/pages/pdp/PDP.vue'),
     },
     {
+      path: '/cart',
+      name: 'cart',
+      component: () => import('@/pages/cart/ShoppingCart.vue'),
+    },
+    {
       path: allRoutes.LOGIN_ROUTE,
       name: allRoutes.LOGIN_ROUTE_NAME,
       component: () => import('@/pages/login/LoginView.vue'),

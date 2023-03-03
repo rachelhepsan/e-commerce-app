@@ -33,10 +33,12 @@ console.log('routeeee', route);
           v-model="state.searchKey"
           v-if="route.name === 'home'"
         />
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span ref="productCount" class="product-count">{{
-          headerCartCount
-        }}</span>
+        <router-link to="/cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span ref="productCount" class="product-count">{{
+            headerCartCount
+          }}</span>
+        </router-link>
         <ButtonComp @click="logout()" class="logout-button">Logout</ButtonComp>
       </div>
     </CardComp>
@@ -87,7 +89,12 @@ h2 {
     margin-right: 25px;
     margin-left: 10px;
     font-size: 25px;
+    color: #000;
   }
+}
+
+i:hover {
+  color: grey;
 }
 
 .search-input {
@@ -99,6 +106,7 @@ h2 {
   margin-right: 22px;
   position: absolute;
   background-color: #ceccc8;
+  color: #000;
   border: 1px solid black;
   border-radius: 12px;
   padding: 1px 7px;

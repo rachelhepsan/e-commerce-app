@@ -29,7 +29,8 @@ export const filterByCategory = checked => {
     state.results = [];
     dataArray.forEach(product => {
       Object.values(checked).forEach(element => {
-        if (product.category.toLowerCase() === element) {
+        console.log('prooductt', product?.categories[0]?.name);
+        if (product.categories[0]?.name.toLowerCase() === element) {
           state.results.push(product);
         }
       });
@@ -69,5 +70,6 @@ export const filterByPriceRange = checked => {
 
 export const getCategory = async () => {
   const response = await getCategoryApi();
-  console.log(response.data.categories);
+  state.categories = response.data.categories;
+  console.log(state.categories);
 };
