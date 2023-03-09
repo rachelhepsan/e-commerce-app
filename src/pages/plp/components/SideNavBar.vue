@@ -30,7 +30,7 @@ const state = plpStore.state;
         <h3>Price Range</h3>
       </li>
       <div>
-        <form>
+        <form class="price-form">
           <input
             type="checkbox"
             id="pr1"
@@ -101,6 +101,7 @@ const state = plpStore.state;
 
 ul {
   list-style: none;
+  padding-left: 0px;
 }
 
 li {
@@ -121,5 +122,8 @@ h3:hover {
 
 .icon-size {
   font-size: 12px;
+}
+.price-form {
+  padding-left: 10px;
 }
 </style>

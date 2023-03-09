@@ -36,13 +36,19 @@ function toggleshowDetails() {
 //changes the text of add to cart when clicked
 //Also updates the total cart count number in the header.
 const updateCart = () => {
+  let flag = true;
   addToCartText.value = 'Added to cart';
-  console.log('cartt', pdpStore.productsInCart);
-  if (!pdpStore.productsInCart.includes(data.value)) {
+  console.log('arrayyyyyy', pdpStore.productsInCart);
+  pdpStore.productsInCart.length == 0 &&
     pdpStore.productsInCart.push(data.value);
-    pdpStore.totalPriceInCart = +pdpStore.totalPriceInCart + +data.value.price;
-  }
-  pdpStore.headerCartCount = +pdpStore.headerCartCount + +pdpStore.headerCart;
+  pdpStore.productsInCart.map(product => {
+    if (product?.id == data.value.id) {
+      flag = false;
+    }
+  });
+  flag && pdpStore.productsInCart.push(data.value);
+  pdpStore.totalPriceInCart = +pdpStore.totalPriceInCart + +data.value.price;
+  pdpStore.headerCartCount = pdpStore.productsInCart.length;
   pdpStore.buttonFlag = true;
 };
 </script>
@@ -56,8 +62,8 @@ const updateCart = () => {
       <h1>{{ data.name }}</h1>
       <p class="product-detail">{{ data.description }}</p>
       <div class="discount">
-        <s class="cut-dollar"><i class="fa-solid fa-indian-rupee-sign"></i></s
-        ><s>101</s>
+        <s class="cut-dollar"><i class="fa-solid fa-indian-rupee-sign"></i></s>
+        <s>101</s>
         <h3>(20% OFF)</h3>
       </div>
 

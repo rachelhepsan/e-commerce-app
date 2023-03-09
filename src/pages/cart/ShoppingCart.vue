@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { HOME_ROUTE } from '@/constants/routes';
 import { usePdpStore } from '@/pages/pdp/pdpStore';
 // import QuantityChange from '@/pages/pdp/components/QuantityChange.vue';
 
@@ -37,13 +38,13 @@ function removeItemFromCart(id) {
           <i class="fa-solid fa-indian-rupee-sign"></i>
           {{ data.price }}
         </h3>
-        <!-- <QuantityChange
-          :data="data"
-          @header-cart="param => (pdpStore.headerCart = param)"
-          @increase-by="param => (pdpStore.totalOutputPrice = param)"
-          @decrease-by="param => (pdpStore.totalOutputPrice = param)"
-        /> -->
       </div>
+      <!-- <QuantityChange
+        :data="data"
+        @header-cart="param => (pdpStore.headerCart = param)"
+        @increase-by="param => (pdpStore.totalOutputPrice = param)"
+        @decrease-by="param => (pdpStore.totalOutputPrice = param)"
+      /> -->
       <div>
         <i
           class="fa-solid fa-trash-can"
@@ -68,7 +69,9 @@ function removeItemFromCart(id) {
         <p class="empty-cart-info">
           Looks like you haven't added anything to your cart yet.
         </p>
-        <a href="http://localhost:3000/">Shop Now</a>
+        <router-link :to="HOME_ROUTE">
+          <a>Shop Now</a>
+        </router-link>
       </div>
       <img
         src="@/assets/images/empty-cart.jpg"

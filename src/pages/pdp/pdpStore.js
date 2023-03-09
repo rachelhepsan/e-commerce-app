@@ -13,6 +13,7 @@ export const usePdpStore = defineStore('pdp', () => {
   const totalOutputPrice = ref(null);
   const productsInCart = ref([]);
   const totalPriceInCart = ref(0);
+  const priceInCart = ref(0);
   return {
     data,
     setData,
@@ -23,5 +24,6 @@ export const usePdpStore = defineStore('pdp', () => {
     totalOutputPrice,
     productsInCart,
     totalPriceInCart,
+    priceInCart,
   };
 });
