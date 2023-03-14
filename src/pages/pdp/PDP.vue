@@ -26,6 +26,13 @@ onMounted(() => {
   getProducts(route.params.productId);
   pdpStore.buttonFlag = false;
   pdpStore.headerCart = 1;
+  if (pdpStore.productsInCart.length) {
+    pdpStore.productsInCart.map(product => {
+      if (product.id == route.params.productId) {
+        addToCartText.value = 'Added to cart';
+      }
+    });
+  }
 });
 
 //Toggle the product detail section of each product
